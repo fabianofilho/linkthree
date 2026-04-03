@@ -1,0 +1,589 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Fabiano Barcellos Filho | Links</title>
+  <meta name="description" content="Links de Fabiano Barcellos Filho — Médico, Cientista de Dados e Especialista em IA na Saúde." />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🩺</text></svg>" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg: #0a0e1a;
+      --bg2: #111827;
+      --bg3: #1a2235;
+      --accent: #3b82f6;
+      --accent2: #06b6d4;
+      --green: #10b981;
+      --text: #e2e8f0;
+      --muted: #94a3b8;
+      --border: #1e293b;
+      --card: #131c2e;
+      --glass: rgba(19, 28, 46, 0.6);
+      --glass-border: rgba(59, 130, 246, 0.15);
+    }
+
+    body.light {
+      --bg: #f8fafc;
+      --bg2: #f1f5f9;
+      --bg3: #e2e8f0;
+      --text: #0f172a;
+      --muted: #64748b;
+      --border: #cbd5e1;
+      --card: #ffffff;
+      --glass: rgba(255, 255, 255, 0.6);
+      --glass-border: rgba(59, 130, 246, 0.2);
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+
+    /* ANIMATED BACKGROUND */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      z-index: -2;
+      background:
+        radial-gradient(ellipse 80% 60% at 20% 10%, rgba(59,130,246,0.12), transparent),
+        radial-gradient(ellipse 60% 50% at 80% 80%, rgba(6,182,212,0.08), transparent),
+        radial-gradient(ellipse 50% 40% at 50% 50%, rgba(16,185,129,0.04), transparent);
+      animation: meshGradient 20s ease infinite alternate;
+    }
+
+    body::after {
+      content: '';
+      position: fixed;
+      inset: 0;
+      z-index: -1;
+      background: radial-gradient(circle, rgba(59,130,246,0.03) 1px, transparent 1px);
+      background-size: 30px 30px;
+      animation: dotShift 25s linear infinite;
+      pointer-events: none;
+    }
+
+    body.light::before {
+      background:
+        radial-gradient(ellipse 80% 60% at 20% 10%, rgba(59,130,246,0.06), transparent),
+        radial-gradient(ellipse 60% 50% at 80% 80%, rgba(6,182,212,0.04), transparent),
+        radial-gradient(ellipse 50% 40% at 50% 50%, rgba(16,185,129,0.02), transparent);
+    }
+
+    body.light::after {
+      background: radial-gradient(circle, rgba(59,130,246,0.04) 1px, transparent 1px);
+      background-size: 30px 30px;
+    }
+
+    @keyframes meshGradient {
+      0% { transform: scale(1) translate(0, 0); }
+      50% { transform: scale(1.1) translate(-2%, 3%); }
+      100% { transform: scale(1) translate(2%, -2%); }
+    }
+
+    @keyframes dotShift {
+      0% { background-position: 0 0; }
+      100% { background-position: 300px 300px; }
+    }
+
+    @keyframes floatProfile {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-8px); }
+    }
+
+    @keyframes loadProgress {
+      0% { width: 0%; }
+      100% { width: 100%; }
+    }
+
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.6; }
+    }
+
+    /* LOADER */
+    #loader {
+      position: fixed;
+      inset: 0;
+      z-index: 1000;
+      background: var(--bg);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 1.5rem;
+      transition: opacity 0.5s ease, visibility 0.5s ease;
+    }
+
+    #loader.hidden {
+      opacity: 0;
+      visibility: hidden;
+    }
+
+    .loader-icon {
+      font-size: 2.5rem;
+      animation: pulse 1.5s ease infinite;
+    }
+
+    .loader-bar {
+      width: 160px;
+      height: 3px;
+      background: var(--border);
+      border-radius: 2px;
+      overflow: hidden;
+    }
+
+    .loader-progress {
+      height: 100%;
+      background: linear-gradient(90deg, var(--accent), var(--accent2));
+      border-radius: 2px;
+      animation: loadProgress 2s ease forwards;
+    }
+
+    /* APP */
+    #app {
+      max-width: 440px;
+      margin: 0 auto;
+      padding: 2rem 1.25rem 3rem;
+      opacity: 0;
+      transition: opacity 0.5s ease;
+    }
+
+    #app.visible {
+      opacity: 1;
+    }
+
+    /* CONTROLS */
+    .controls {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 2rem;
+    }
+
+    .ctrl-btn {
+      font-family: 'Fira Code', monospace;
+      font-size: 0.72rem;
+      background: transparent;
+      border: 1px solid var(--border);
+      color: var(--muted);
+      border-radius: 6px;
+      padding: 0.3rem 0.65rem;
+      cursor: pointer;
+      transition: all 0.25s ease;
+      letter-spacing: 0.08em;
+      line-height: 1;
+    }
+
+    .ctrl-btn:hover {
+      border-color: var(--accent);
+      color: var(--accent);
+    }
+
+    #theme-btn {
+      display: flex;
+      align-items: center;
+      padding: 0.3rem 0.55rem;
+    }
+
+    #theme-btn svg {
+      width: 1rem;
+      height: 1rem;
+      stroke: currentColor;
+      fill: none;
+      stroke-width: 1.75;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
+    /* PROFILE */
+    .profile {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      margin-bottom: 2.25rem;
+    }
+
+    .photo-wrapper {
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      padding: 3px;
+      background: linear-gradient(135deg, var(--accent), var(--accent2), var(--green));
+      box-shadow: 0 0 30px rgba(59,130,246,0.25), 0 0 60px rgba(6,182,212,0.1);
+      animation: floatProfile 6s ease-in-out infinite;
+      margin-bottom: 1.25rem;
+    }
+
+    .photo-wrapper img {
+      width: 100%;
+      height: 100%;
+      border-radius: 50%;
+      object-fit: cover;
+      display: block;
+      border: 3px solid var(--bg);
+    }
+
+    .profile-name {
+      font-size: 1.5rem;
+      font-weight: 700;
+      background: linear-gradient(135deg, var(--accent), var(--accent2));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      margin-bottom: 0.5rem;
+    }
+
+    .profile-badge {
+      font-family: 'Fira Code', monospace;
+      font-size: 0.72rem;
+      color: var(--accent2);
+      letter-spacing: 0.05em;
+      padding: 0.3rem 0.85rem;
+      border: 1px solid var(--glass-border);
+      border-radius: 20px;
+      background: var(--glass);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      margin-bottom: 0.75rem;
+    }
+
+    .profile-sub {
+      font-size: 0.85rem;
+      color: var(--muted);
+      max-width: 340px;
+      line-height: 1.5;
+    }
+
+    /* LINK CARDS */
+    .links {
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+      margin-bottom: 2rem;
+    }
+
+    .link-card {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      padding: 0.95rem 1.15rem;
+      background: var(--glass);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border: 1px solid var(--glass-border);
+      border-radius: 14px;
+      text-decoration: none;
+      color: var(--text);
+      transition: all 0.3s ease;
+      opacity: 0;
+      transform: translateY(16px);
+    }
+
+    .link-card.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .link-card:hover {
+      transform: translateY(-3px);
+      border-color: var(--accent);
+      box-shadow: 0 8px 32px rgba(59,130,246,0.12);
+      background: var(--glass);
+    }
+
+    .link-card:active {
+      transform: translateY(0);
+    }
+
+    .link-icon {
+      width: 40px;
+      height: 40px;
+      border-radius: 10px;
+      background: var(--bg2);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.1rem;
+      color: var(--accent);
+      flex-shrink: 0;
+      transition: all 0.3s ease;
+    }
+
+    .link-card:hover .link-icon {
+      background: var(--accent);
+      color: var(--bg);
+    }
+
+    .link-info {
+      flex: 1;
+      min-width: 0;
+    }
+
+    .link-label {
+      font-weight: 600;
+      font-size: 0.95rem;
+    }
+
+    .link-desc {
+      font-size: 0.75rem;
+      color: var(--muted);
+      margin-top: 0.1rem;
+    }
+
+    .link-arrow {
+      color: var(--muted);
+      font-size: 0.85rem;
+      transition: all 0.3s ease;
+      flex-shrink: 0;
+    }
+
+    .link-card:hover .link-arrow {
+      color: var(--accent);
+      transform: translateX(3px);
+    }
+
+    /* FOOTER */
+    footer {
+      text-align: center;
+      padding-top: 1rem;
+      border-top: 1px solid var(--border);
+    }
+
+    .footer-name {
+      font-size: 0.8rem;
+      font-weight: 500;
+      color: var(--muted);
+      margin-bottom: 0.25rem;
+    }
+
+    .footer-copy {
+      font-family: 'Fira Code', monospace;
+      font-size: 0.65rem;
+      color: var(--border);
+      letter-spacing: 0.05em;
+    }
+
+    /* SCROLLBAR */
+    ::-webkit-scrollbar { width: 6px; }
+    ::-webkit-scrollbar-track { background: transparent; }
+    ::-webkit-scrollbar-thumb { background: var(--accent); border-radius: 3px; }
+
+    /* RESPONSIVE */
+    @media (max-width: 480px) {
+      #app { padding: 1.5rem 1rem 2.5rem; }
+      .profile-name { font-size: 1.35rem; }
+      .photo-wrapper { width: 100px; height: 100px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- LOADER -->
+<div id="loader">
+  <div class="loader-icon">🩺</div>
+  <div class="loader-bar"><div class="loader-progress"></div></div>
+</div>
+
+<!-- APP -->
+<div id="app">
+
+  <!-- CONTROLS -->
+  <div class="controls">
+    <button class="ctrl-btn" id="lang-btn" onclick="toggleLang()">EN</button>
+    <button class="ctrl-btn" id="theme-btn" onclick="toggleTheme()">
+      <svg id="theme-icon" viewBox="0 0 24 24">
+        <circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/>
+      </svg>
+    </button>
+  </div>
+
+  <!-- PROFILE -->
+  <div class="profile">
+    <div class="photo-wrapper">
+      <img src="https://github.com/fabianofilho.png" alt="Fabiano Barcellos Filho" loading="eager" />
+    </div>
+    <h1 class="profile-name">Fabiano Barcellos Filho</h1>
+    <div class="profile-badge" data-i18n="bio.badge">Médico · Cientista de Dados · IA na Saúde</div>
+    <p class="profile-sub" data-i18n="bio.sub">Gerente Médico de Inovação e IA na Hapvida · Doutorando em Machine Learning na FSP-USP</p>
+  </div>
+
+  <!-- LINKS -->
+  <div class="links">
+
+    <a href="https://fabianofilho.com" target="_blank" rel="noopener" class="link-card">
+      <div class="link-icon"><i class="fa-solid fa-globe"></i></div>
+      <div class="link-info">
+        <div class="link-label">Portfolio</div>
+        <div class="link-desc" data-i18n="desc.portfolio">Meu site pessoal e projetos</div>
+      </div>
+      <div class="link-arrow">↗</div>
+    </a>
+
+    <a href="https://www.linkedin.com/in/fabianofilho/" target="_blank" rel="noopener" class="link-card">
+      <div class="link-icon"><i class="fa-brands fa-linkedin-in"></i></div>
+      <div class="link-info">
+        <div class="link-label">LinkedIn</div>
+        <div class="link-desc" data-i18n="desc.linkedin">Rede profissional e atualizações</div>
+      </div>
+      <div class="link-arrow">↗</div>
+    </a>
+
+    <a href="https://scholar.google.com/citations?user=IqVY-BQAAAAJ&hl=pt-BR" target="_blank" rel="noopener" class="link-card">
+      <div class="link-icon"><i class="fa-solid fa-graduation-cap"></i></div>
+      <div class="link-info">
+        <div class="link-label">Google Scholar</div>
+        <div class="link-desc" data-i18n="desc.scholar">Publicações acadêmicas e citações</div>
+      </div>
+      <div class="link-arrow">↗</div>
+    </a>
+
+    <a href="https://fabianofilho.substack.com/" target="_blank" rel="noopener" class="link-card">
+      <div class="link-icon"><i class="fa-solid fa-newspaper"></i></div>
+      <div class="link-info">
+        <div class="link-label">Substack</div>
+        <div class="link-desc" data-i18n="desc.substack">Newsletter sobre IA na Saúde</div>
+      </div>
+      <div class="link-arrow">↗</div>
+    </a>
+
+    <a href="https://fabianonbfilho.medium.com/" target="_blank" rel="noopener" class="link-card">
+      <div class="link-icon"><i class="fa-brands fa-medium"></i></div>
+      <div class="link-info">
+        <div class="link-label">Medium</div>
+        <div class="link-desc" data-i18n="desc.medium">Artigos sobre Ciência de Dados na Saúde</div>
+      </div>
+      <div class="link-arrow">↗</div>
+    </a>
+
+    <a href="https://github.com/fabianofilho" target="_blank" rel="noopener" class="link-card">
+      <div class="link-icon"><i class="fa-brands fa-github"></i></div>
+      <div class="link-info">
+        <div class="link-label">GitHub</div>
+        <div class="link-desc" data-i18n="desc.github">Projetos open-source de ML na saúde</div>
+      </div>
+      <div class="link-arrow">↗</div>
+    </a>
+
+  </div>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-name">Fabiano Barcellos Filho, MD</div>
+    <div class="footer-copy" data-i18n="footer.copy">© 2026 · fabianofilho.com</div>
+  </footer>
+
+</div>
+
+<script>
+  // --- LOADER ---
+  window.addEventListener('load', function() {
+    setTimeout(function() {
+      document.getElementById('loader').classList.add('hidden');
+      document.getElementById('app').classList.add('visible');
+      animateCards();
+    }, 2200);
+  });
+  setTimeout(function() {
+    document.getElementById('loader').classList.add('hidden');
+    document.getElementById('app').classList.add('visible');
+    animateCards();
+  }, 4000);
+
+  // --- CARD ENTRANCE ANIMATION ---
+  function animateCards() {
+    var cards = document.querySelectorAll('.link-card');
+    cards.forEach(function(card, i) {
+      setTimeout(function() {
+        card.classList.add('visible');
+      }, i * 100);
+    });
+  }
+
+  // --- THEME ---
+  var moonIcon = '<circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/>';
+  var sunIcon = '<path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>';
+
+  var currentTheme = localStorage.getItem('linkthree-theme') || 'dark';
+  if (currentTheme === 'light') {
+    document.body.classList.add('light');
+    document.getElementById('theme-icon').innerHTML = sunIcon;
+  }
+
+  function toggleTheme() {
+    currentTheme = currentTheme === 'dark' ? 'light' : 'dark';
+    document.body.classList.toggle('light', currentTheme === 'light');
+    document.getElementById('theme-icon').innerHTML = currentTheme === 'dark' ? moonIcon : sunIcon;
+    localStorage.setItem('linkthree-theme', currentTheme);
+  }
+
+  // --- LANGUAGE ---
+  var currentLang = localStorage.getItem('linkthree-lang') || 'pt';
+
+  var translations = {
+    pt: {
+      'bio.badge': 'Médico · Cientista de Dados · IA na Saúde',
+      'bio.sub': 'Gerente Médico de Inovação e IA na Hapvida · Doutorando em Machine Learning na FSP-USP',
+      'desc.portfolio': 'Meu site pessoal e projetos',
+      'desc.linkedin': 'Rede profissional e atualizações',
+      'desc.scholar': 'Publicações acadêmicas e citações',
+      'desc.substack': 'Newsletter sobre IA na Saúde',
+      'desc.medium': 'Artigos sobre Ciência de Dados na Saúde',
+      'desc.github': 'Projetos open-source de ML na saúde',
+      'footer.copy': '© 2026 · fabianofilho.com'
+    },
+    en: {
+      'bio.badge': 'Physician · Data Scientist · AI in Health',
+      'bio.sub': 'Medical Innovation & AI Manager at Hapvida · PhD Candidate in ML at FSP-USP',
+      'desc.portfolio': 'My personal site and projects',
+      'desc.linkedin': 'Professional network and updates',
+      'desc.scholar': 'Academic publications and citations',
+      'desc.substack': 'Newsletter on AI in Healthcare',
+      'desc.medium': 'Articles on Data Science in Health',
+      'desc.github': 'Open-source ML projects in healthcare',
+      'footer.copy': '© 2026 · fabianofilho.com'
+    }
+  };
+
+  function applyTranslations(lang) {
+    var t = translations[lang];
+    document.querySelectorAll('[data-i18n]').forEach(function(el) {
+      var key = el.getAttribute('data-i18n');
+      if (t[key] !== undefined) el.textContent = t[key];
+    });
+    document.documentElement.lang = lang === 'pt' ? 'pt-BR' : 'en';
+  }
+
+  function toggleLang() {
+    currentLang = currentLang === 'pt' ? 'en' : 'pt';
+    localStorage.setItem('linkthree-lang', currentLang);
+    document.getElementById('lang-btn').textContent = currentLang === 'pt' ? 'EN' : 'PT';
+    applyTranslations(currentLang);
+  }
+
+  // Apply saved language on load
+  if (currentLang === 'en') {
+    document.getElementById('lang-btn').textContent = 'PT';
+    applyTranslations('en');
+  }
+</script>
+
+</body>
+</html>
