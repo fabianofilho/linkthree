@@ -1,0 +1,11 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "linkthree",
+      "runtimeExecutable": "python3",
+      "runtimeArgs": ["-m", "http.server", "8093"],
+      "port": 8093
+    }
+  ]
+}
